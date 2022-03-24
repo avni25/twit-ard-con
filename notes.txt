@@ -1,0 +1,6 @@
+install
+pyqt5
+pyqt5-tools
+pprint
+tweepy
+requests
