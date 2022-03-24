@@ -1,6 +1,6 @@
 import sys
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow, QToolTip
+from PyQt5.QtWidgets import QApplication, QMainWindow, QToolTip, QMessageBox
 from PyQt5.QtGui import QIcon
 from MainWindow import Ui_MainWindow
 from main import post_tweet
@@ -15,8 +15,14 @@ class App(QtWidgets.QMainWindow):
 
     def post(self):
         result = self.ui.txt_tweet.toPlainText()
-        post_tweet(result)
-        print("tweet posted!!")
+        if result != "" and result is not None:
+            post_tweet(result)
+            self.ui.txt_tweet.setText("")
+            print("tweet posted!!")
+            QMessageBox.about(self, "Success!!", "Tweet posted!!")
+        else: 
+            print("couldn't post tweet. Empty text.")
+        
     
             
 def app():
