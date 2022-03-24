@@ -34,11 +34,23 @@ def post_tweet(tweet_text):
 
 def get_user_tweets():
    user_tweets = api.user_timeline()
+   tweetList = []
    for tweet in user_tweets:
+      print(tweet.id_str)
       print(tweet.text)
+      tweetList.append({
+         "id": tweet.id,
+         "text": tweet.text
+      })
+   
+   return tweetList
 
-
-
-get_public_tweets()
       
+def delete_tweet(id):
+   api.destroy_status(id)
+   
+
+
+print(get_user_tweets())
+
 
