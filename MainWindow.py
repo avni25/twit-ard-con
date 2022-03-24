@@ -33,9 +33,9 @@ class Ui_MainWindow(object):
         font.setPointSize(14)
         self.label.setFont(font)
         self.label.setObjectName("label")
-        self.textEdit = QtWidgets.QTextEdit(self.groupBox)
-        self.textEdit.setGeometry(QtCore.QRect(10, 40, 201, 101))
-        self.textEdit.setObjectName("textEdit")
+        self.txt_tweet = QtWidgets.QTextEdit(self.groupBox)
+        self.txt_tweet.setGeometry(QtCore.QRect(10, 40, 201, 101))
+        self.txt_tweet.setObjectName("txt_tweet")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 586, 21))
@@ -54,7 +54,7 @@ class Ui_MainWindow(object):
         self.groupBox.setTitle(_translate("MainWindow", "Twitter"))
         self.btn_post.setText(_translate("MainWindow", "Post"))
         self.label.setText(_translate("MainWindow", "Tweet Content"))
-        self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.txt_tweet.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"

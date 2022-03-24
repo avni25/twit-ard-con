@@ -67,8 +67,6 @@ def postTemp(cityname):
       print("can not post tweet. no data!!!")
 
 
-pprint(getWeatherData("cape town"))
-
 
 
 
