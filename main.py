@@ -3,9 +3,11 @@ import requests
 from config import *
 from pprint import pprint
 
-# auth = tweepy.OAuth1UserHandler(
-#    API_KEY, API_KEY_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET
-# )
+
+
+cities = ["antalya","bursa","london", "berlin", "istanbul", "kyiv","prague",
+          "paris","hamburg","barcelona","madrid", "minsk", "moscow",
+          "dubai","cape town","sydney"]
 
 auth = tweepy.OAuthHandler(API_KEY, API_KEY_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
@@ -50,22 +52,23 @@ def delete_tweet(id):
    
 
 
-# print(get_user_tweets())
-
-# "https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=fb118897810766f52e8d4079a48924e3&units=metric"
-
 def getWeatherData(cityname):
    res = requests.get('https://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}&units=metric'.format(cityname, WEATHER_API_KEY));
    pprint(res.json()["main"]["temp"])
    return res.json()
 
+# post the given city's temperature in a tweet
 def postTemp(cityname):
    t = getWeatherData(cityname)["main"]["temp"]
    if t is not None:
-      post_tweet('temp in Berlin is {0}'.format(t))
-      pprint("twwet posted!!")
+      post_tweet('temp in Berlin is {0} C. '.format(t))
+      pprint("tweet posted!!")
    else:
       print("can not post tweet. no data!!!")
 
 
-postTemp("london")
+pprint(getWeatherData("cape town"))
+
+
+
+
