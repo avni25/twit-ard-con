@@ -4,3 +4,11 @@ pyqt5-tools
 pprint
 tweepy
 requests
+
+
+
+
+
+
+# commands
+pyuic5 MainWindow.ui -o MainWindow.py  // update window components
