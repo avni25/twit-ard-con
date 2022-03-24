@@ -3,7 +3,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QToolTip
 from PyQt5.QtGui import QIcon
 from MainWindow import Ui_MainWindow
-# from main import post_tweet
+from main import post_tweet
 
 
 class App(QtWidgets.QMainWindow):
@@ -11,11 +11,12 @@ class App(QtWidgets.QMainWindow):
         super(App, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ui.btn_post.clicked.connect(self.pr)
+        self.ui.btn_post.clicked.connect(self.post)
 
-    def pr(self):
+    def post(self):
         result = self.ui.txt_tweet.toPlainText()
-        print(result)
+        post_tweet(result)
+        print("tweet posted!!")
     
             
 def app():
