@@ -5,7 +5,7 @@ from PyQt5.QtGui import QIcon
 from MainWindow import Ui_MainWindow
 from main import post_tweet, getWeatherData
 from pprint import pprint
-
+import webbrowser
 
 class App(QtWidgets.QMainWindow):
     def __init__(self):
@@ -14,11 +14,26 @@ class App(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.ui.btn_post.clicked.connect(self.post)
         self.ui.btn_temp.clicked.connect(self.getTemp)
-        self.ui.btn_connect_arduino.clicked.connect(self.asd)
-        self.ui.btn_send.clicked.connect(self.asd)
+        self.ui.btn_connect_arduino.clicked.connect(self.connectArduino)
+        self.ui.btn_send.clicked.connect(self.sendLog)
+        self.ui.btn_link_twitter.clicked.connect(self.goToLink)
+        self.ui.btn_link_weather.clicked.connect(self.goToLink)
+    
+    def goToLink(self):
+        button_name = self.sender().objectName()
+        url_weather = "https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=36.8744&lon=30.6313&zoom=4"
+        url_twitter  ="https://twitter.com/havni25"
+        if button_name == "btn_link_twitter":
+            webbrowser.open(url_twitter)
+        elif button_name == "btn_link_weather":
+            webbrowser.open(url_weather)
         
-    def asd(self):
-        print("show") 
+        
+    def connectArduino(self):
+        print("connect arduino")
+    
+    def sendLog(self):
+        print("send log") 
         
     def getTemp(self):
         selected_city = self.ui.comboBox.currentText()
@@ -26,7 +41,8 @@ class App(QtWidgets.QMainWindow):
         if selected_city != "" and selected_city is not None:
             try:
                 jsonData = getWeatherData(selected_city)
-                pprint(jsonData["main"]["temp"])
+                t = jsonData["main"]["temp"]
+                self.ui.lcd_result.setProperty("value", t)
             except Exception as e:
                 print(e)
         

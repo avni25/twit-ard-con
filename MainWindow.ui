@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>652</width>
-    <height>554</height>
+    <height>570</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QGroupBox" name="group_twitter">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>260</y>
+      <x>380</x>
+      <y>290</y>
       <width>261</width>
       <height>231</height>
      </rect>
@@ -39,7 +39,7 @@ color: rgb(28, 149, 255);</string>
      <property name="geometry">
       <rect>
        <x>160</x>
-       <y>190</y>
+       <y>150</y>
        <width>91</width>
        <height>31</height>
       </rect>
@@ -82,7 +82,7 @@ QPushButton:hover
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>40</y>
+       <y>30</y>
        <width>131</width>
        <height>31</height>
       </rect>
@@ -100,9 +100,9 @@ QPushButton:hover
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>80</y>
+       <y>60</y>
        <width>241</width>
-       <height>101</height>
+       <height>81</height>
       </rect>
      </property>
      <property name="html">
@@ -113,19 +113,43 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="btn_link_twitter">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>200</y>
+       <width>161</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: blue;</string>
+     </property>
+     <property name="text">
+      <string>go to twitter account web page</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="group_weatherapi">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>380</x>
       <y>20</y>
       <width>261</width>
-      <height>231</height>
+      <height>261</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>16</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="cursor">
@@ -143,17 +167,38 @@ p, li { white-space: pre-wrap; }
     <widget class="QLCDNumber" name="lcd_result">
      <property name="geometry">
       <rect>
-       <x>130</x>
-       <y>160</y>
-       <width>111</width>
+       <x>10</x>
+       <y>170</y>
+       <width>181</width>
        <height>61</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:red;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="lineWidth">
+      <number>2</number>
+     </property>
+     <property name="midLineWidth">
+      <number>0</number>
      </property>
      <property name="smallDecimalPoint">
       <bool>false</bool>
      </property>
+     <property name="digitCount">
+      <number>7</number>
+     </property>
      <property name="value" stdset="0">
-      <double>12.400000000000000</double>
+      <double>0.000000000000000</double>
      </property>
     </widget>
     <widget class="QComboBox" name="comboBox">
@@ -177,11 +222,6 @@ p, li { white-space: pre-wrap; }
       <property name="icon">
        <iconset theme="dark">
         <normaloff>.</normaloff>.</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>bursa</string>
       </property>
      </item>
      <item>
@@ -251,8 +291,8 @@ p, li { white-space: pre-wrap; }
     <widget class="QPushButton" name="btn_temp">
      <property name="geometry">
       <rect>
-       <x>130</x>
-       <y>90</y>
+       <x>140</x>
+       <y>120</y>
        <width>111</width>
        <height>41</height>
       </rect>
@@ -336,6 +376,49 @@ QPushButton:hover
      </property>
      <property name="readOnly">
       <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>170</y>
+       <width>31</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>32</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: red;</string>
+     </property>
+     <property name="text">
+      <string>C</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_link_weather">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>240</y>
+       <width>211</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: blue;</string>
+     </property>
+     <property name="text">
+      <string>for more cities visit openweatehrmap.org</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>
@@ -453,6 +536,9 @@ a
      </property>
     </widget>
     <widget class="QLabel" name="lbl_connecton_status">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>140</x>
