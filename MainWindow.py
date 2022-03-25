@@ -14,89 +14,203 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(591, 522)
+        MainWindow.resize(652, 554)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox.setGeometry(QtCore.QRect(360, 230, 221, 231))
+        self.group_twitter = QtWidgets.QGroupBox(self.centralwidget)
+        self.group_twitter.setGeometry(QtCore.QRect(370, 260, 261, 231))
         font = QtGui.QFont()
         font.setPointSize(16)
-        self.groupBox.setFont(font)
-        self.groupBox.setStyleSheet("\n"
+        self.group_twitter.setFont(font)
+        self.group_twitter.setStyleSheet("\n"
 "color: rgb(28, 149, 255);")
-        self.groupBox.setObjectName("groupBox")
-        self.btn_post = QtWidgets.QPushButton(self.groupBox)
-        self.btn_post.setGeometry(QtCore.QRect(140, 190, 71, 31))
+        self.group_twitter.setObjectName("group_twitter")
+        self.btn_post = QtWidgets.QPushButton(self.group_twitter)
+        self.btn_post.setGeometry(QtCore.QRect(160, 190, 91, 31))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.btn_post.setFont(font)
+        self.btn_post.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_post.setMouseTracking(False)
         self.btn_post.setToolTip("")
+        self.btn_post.setStyleSheet("QPushButton{    \n"
+"    background-color: rgb(23, 96, 186);\n"
+"    color: white;\n"
+"    border-radius: 15px;\n"
+"    cursor: pointer;\n"
+"    \n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{   \n"
+"    background-color: rgb(34, 178, 255);\n"
+"    cursor: pointer;\n"
+"}\n"
+"")
         self.btn_post.setObjectName("btn_post")
-        self.label = QtWidgets.QLabel(self.groupBox)
+        self.label = QtWidgets.QLabel(self.group_twitter)
         self.label.setGeometry(QtCore.QRect(10, 40, 131, 31))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.label.setFont(font)
         self.label.setObjectName("label")
-        self.txt_tweet = QtWidgets.QTextEdit(self.groupBox)
-        self.txt_tweet.setGeometry(QtCore.QRect(10, 80, 201, 101))
+        self.txt_tweet = QtWidgets.QTextEdit(self.group_twitter)
+        self.txt_tweet.setGeometry(QtCore.QRect(10, 80, 241, 101))
         self.txt_tweet.setObjectName("txt_tweet")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(30, 20, 101, 41))
-        self.pushButton.setObjectName("pushButton")
-        self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(30, 70, 131, 31))
+        self.group_weatherapi = QtWidgets.QGroupBox(self.centralwidget)
+        self.group_weatherapi.setGeometry(QtCore.QRect(370, 20, 261, 231))
         font = QtGui.QFont()
         font.setPointSize(16)
-        self.label_2.setFont(font)
-        self.label_2.setObjectName("label_2")
-        self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox_2.setGeometry(QtCore.QRect(20, 230, 261, 231))
+        self.group_weatherapi.setFont(font)
+        self.group_weatherapi.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        self.group_weatherapi.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.group_weatherapi.setStyleSheet("color: rgb(255, 68, 35);")
+        self.group_weatherapi.setObjectName("group_weatherapi")
+        self.lcd_result = QtWidgets.QLCDNumber(self.group_weatherapi)
+        self.lcd_result.setGeometry(QtCore.QRect(130, 160, 111, 61))
+        self.lcd_result.setSmallDecimalPoint(False)
+        self.lcd_result.setProperty("value", 12.4)
+        self.lcd_result.setObjectName("lcd_result")
+        self.comboBox = QtWidgets.QComboBox(self.group_weatherapi)
+        self.comboBox.setGeometry(QtCore.QRect(20, 50, 101, 21))
         font = QtGui.QFont()
-        font.setPointSize(16)
-        self.groupBox_2.setFont(font)
-        self.groupBox_2.setObjectName("groupBox_2")
-        self.lcdNumber = QtWidgets.QLCDNumber(self.groupBox_2)
-        self.lcdNumber.setGeometry(QtCore.QRect(140, 140, 111, 61))
-        self.lcdNumber.setObjectName("lcdNumber")
-        self.comboBox = QtWidgets.QComboBox(self.groupBox_2)
-        self.comboBox.setGeometry(QtCore.QRect(20, 50, 91, 21))
-        font = QtGui.QFont()
-        font.setPointSize(12)
+        font.setPointSize(10)
         self.comboBox.setFont(font)
         self.comboBox.setObjectName("comboBox")
         icon = QtGui.QIcon.fromTheme("dark")
         self.comboBox.addItem(icon, "")
-        self.label_3 = QtWidgets.QLabel(self.groupBox_2)
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.label_3 = QtWidgets.QLabel(self.group_weatherapi)
         self.label_3.setGeometry(QtCore.QRect(20, 30, 101, 21))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
-        self.pushButton_2 = QtWidgets.QPushButton(self.groupBox_2)
-        self.pushButton_2.setGeometry(QtCore.QRect(140, 40, 111, 41))
+        self.btn_temp = QtWidgets.QPushButton(self.group_weatherapi)
+        self.btn_temp.setGeometry(QtCore.QRect(130, 90, 111, 41))
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.plainTextEdit = QtWidgets.QPlainTextEdit(self.centralwidget)
-        self.plainTextEdit.setGeometry(QtCore.QRect(280, 30, 301, 181))
+        self.btn_temp.setFont(font)
+        self.btn_temp.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_temp.setStyleSheet("QPushButton{\n"
+"    background-color: rgb(184, 61, 0);\n"
+"    color: white;\n"
+"    border-radius: 20px;\n"
+"    cursor: pointer;\n"
+"    border: 1px solid red;\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{   \n"
+"    background-color: rgb(255, 114, 44);\n"
+"    cursor: pointer;\n"
+"}\n"
+"\n"
+"")
+        self.btn_temp.setShortcut("")
+        self.btn_temp.setCheckable(False)
+        self.btn_temp.setChecked(False)
+        self.btn_temp.setAutoDefault(False)
+        self.btn_temp.setDefault(False)
+        self.btn_temp.setFlat(False)
+        self.btn_temp.setObjectName("btn_temp")
+        self.checkBox_manual = QtWidgets.QCheckBox(self.group_weatherapi)
+        self.checkBox_manual.setGeometry(QtCore.QRect(130, 20, 121, 31))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.checkBox_manual.setFont(font)
+        self.checkBox_manual.setObjectName("checkBox_manual")
+        self.lineEdit_2 = QtWidgets.QLineEdit(self.group_weatherapi)
+        self.lineEdit_2.setEnabled(False)
+        self.lineEdit_2.setGeometry(QtCore.QRect(130, 50, 113, 20))
+        self.lineEdit_2.setReadOnly(False)
+        self.lineEdit_2.setObjectName("lineEdit_2")
+        self.group_arduino = QtWidgets.QGroupBox(self.centralwidget)
+        self.group_arduino.setGeometry(QtCore.QRect(20, 10, 341, 481))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.group_arduino.setFont(font)
+        self.group_arduino.setStyleSheet("")
+        self.group_arduino.setObjectName("group_arduino")
+        self.btn_connect_arduino = QtWidgets.QPushButton(self.group_arduino)
+        self.btn_connect_arduino.setGeometry(QtCore.QRect(10, 30, 101, 41))
         font = QtGui.QFont()
         font.setPointSize(10)
-        self.plainTextEdit.setFont(font)
-        self.plainTextEdit.setStyleSheet("color: white;\n"
+        self.btn_connect_arduino.setFont(font)
+        self.btn_connect_arduino.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_connect_arduino.setStyleSheet("QPushButton{    \n"
+"    background-color: rgb(23, 96, 186);\n"
+"    color: white;\n"
+"    border-radius: 15px;\n"
+"    cursor: pointer;\n"
+"    \n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{   \n"
+"    background-color: rgb(34, 178, 255);\n"
+"    cursor: pointer;\n"
+"}")
+        self.btn_connect_arduino.setObjectName("btn_connect_arduino")
+        self.textedit_log = QtWidgets.QPlainTextEdit(self.group_arduino)
+        self.textedit_log.setGeometry(QtCore.QRect(0, 110, 311, 271))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.textedit_log.setFont(font)
+        self.textedit_log.setStyleSheet("color: green;\n"
 "background-color: black;")
-        self.plainTextEdit.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.plainTextEdit.setObjectName("plainTextEdit")
-        self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(280, 0, 101, 31))
+        self.textedit_log.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.textedit_log.setObjectName("textedit_log")
+        self.lineEdit_log = QtWidgets.QLineEdit(self.group_arduino)
+        self.lineEdit_log.setGeometry(QtCore.QRect(0, 380, 251, 31))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.lineEdit_log.setFont(font)
+        self.lineEdit_log.setObjectName("lineEdit_log")
+        self.lbl_connecton_status = QtWidgets.QLabel(self.group_arduino)
+        self.lbl_connecton_status.setGeometry(QtCore.QRect(140, 30, 131, 31))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.lbl_connecton_status.setFont(font)
+        self.lbl_connecton_status.setStyleSheet("color:green")
+        self.lbl_connecton_status.setObjectName("lbl_connecton_status")
+        self.label_4 = QtWidgets.QLabel(self.group_arduino)
+        self.label_4.setGeometry(QtCore.QRect(10, 70, 101, 31))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
+        self.btn_send = QtWidgets.QPushButton(self.group_arduino)
+        self.btn_send.setGeometry(QtCore.QRect(250, 380, 61, 31))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.btn_send.setFont(font)
+        self.btn_send.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_send.setStyleSheet("QPushButton{    \n"
+"    background-color: rgb(23, 96, 186);\n"
+"    color: white;    \n"
+"    cursor: pointer;\n"
+"    \n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{   \n"
+"    background-color: rgb(34, 178, 255);\n"
+"    cursor: pointer;\n"
+"}")
+        self.btn_send.setObjectName("btn_send")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 591, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 652, 21))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -109,7 +223,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.groupBox.setTitle(_translate("MainWindow", "Twitter"))
+        self.group_twitter.setTitle(_translate("MainWindow", "Twitter"))
         self.btn_post.setText(_translate("MainWindow", "Post"))
         self.label.setText(_translate("MainWindow", "Tweet Content"))
         self.txt_tweet.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -117,11 +231,41 @@ class Ui_MainWindow(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
-        self.pushButton.setText(_translate("MainWindow", "Connect Arduino"))
-        self.label_2.setText(_translate("MainWindow", "Connected!!"))
-        self.groupBox_2.setTitle(_translate("MainWindow", "WeatherAPI"))
+        self.group_weatherapi.setTitle(_translate("MainWindow", "WeatherAPI"))
         self.comboBox.setItemText(0, _translate("MainWindow", "istanbul"))
+        self.comboBox.setItemText(1, _translate("MainWindow", "bursa"))
+        self.comboBox.setItemText(2, _translate("MainWindow", "antalya"))
+        self.comboBox.setItemText(3, _translate("MainWindow", "berlin"))
+        self.comboBox.setItemText(4, _translate("MainWindow", "london"))
+        self.comboBox.setItemText(5, _translate("MainWindow", "moscow"))
+        self.comboBox.setItemText(6, _translate("MainWindow", "paris"))
+        self.comboBox.setItemText(7, _translate("MainWindow", "sydney"))
+        self.comboBox.setItemText(8, _translate("MainWindow", "cape town"))
+        self.comboBox.setItemText(9, _translate("MainWindow", "madrid"))
+        self.comboBox.setItemText(10, _translate("MainWindow", "prague"))
         self.label_3.setText(_translate("MainWindow", "City name"))
-        self.pushButton_2.setText(_translate("MainWindow", "Get Temp"))
-        self.plainTextEdit.setPlainText(_translate("MainWindow", "qwe"))
+        self.btn_temp.setText(_translate("MainWindow", "Get Temp"))
+        self.checkBox_manual.setText(_translate("MainWindow", "type manual"))
+        self.group_arduino.setTitle(_translate("MainWindow", "Arduino"))
+        self.btn_connect_arduino.setText(_translate("MainWindow", "Connect Arduino"))
+        self.textedit_log.setPlainText(_translate("MainWindow", "qwe\n"
+"asd\n"
+"asd\n"
+"asd\n"
+"as\n"
+"dasd\n"
+"asd\n"
+"as\n"
+"das\n"
+"d\n"
+"asd\n"
+"a\n"
+"sd\n"
+"as\n"
+"d\n"
+"asd\n"
+"a\n"
+""))
+        self.lbl_connecton_status.setText(_translate("MainWindow", "Connected!!"))
         self.label_4.setText(_translate("MainWindow", "Log"))
+        self.btn_send.setText(_translate("MainWindow", "Send"))
