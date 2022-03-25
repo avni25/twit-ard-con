@@ -69,16 +69,32 @@ class App(QtWidgets.QMainWindow):
         
         
     def post(self):
-        result = self.ui.txt_tweet.toPlainText()
-        if result != "" and result is not None:
-            post_tweet(result)
-            self.ui.txt_tweet.setText("")
-            print("tweet posted!!")
-            QMessageBox.about(self, "Success!!", "Tweet posted!!")
-        else: 
-            print("couldn't post tweet. Empty text.")
-        
-    
+        btn_name = self.sender().objectName()
+        if btn_name == "btn_post":
+            result = self.ui.txt_tweet.toPlainText()
+            if result != "" and result is not None:
+                try:
+                    post_tweet(result)
+                    self.ui.txt_tweet.setText("")
+                    print("tweet posted!!")
+                    QMessageBox.about(self, "Success!!", "Tweet posted!!")
+                except Exception as e:
+                    print(e)
+                    QMessageBox.about(self, "Error!", "duplicate tweet!!!")
+            else: 
+                print("couldn't post tweet. Empty text.")
+        elif btn_name == "btn_quickPost":
+            city_name = self.ui.lbl_selected_city.text()
+            temp = self.ui.lcd_result.value()
+            if city_name != "" and city_name is not None :
+                result = "Weather in " + city_name + " is " + str(temp) + " °C"
+                try:
+                    post_tweet(result)
+                    print("tweet posted!!")
+                    QMessageBox.about(self, "Success!!", "Tweet posted!!")
+                except Exception as e:
+                    print(e)
+                    QMessageBox.about(self, "Error!", "duplicate tweet!!!")
             
 def app():
     app = QtWidgets.QApplication(sys.argv)
