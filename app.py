@@ -18,6 +18,19 @@ class App(QtWidgets.QMainWindow):
         self.ui.btn_send.clicked.connect(self.sendLog)
         self.ui.btn_link_twitter.clicked.connect(self.goToLink)
         self.ui.btn_link_weather.clicked.connect(self.goToLink)
+        self.ui.checkBox_manual.stateChanged.connect(self.activateText)
+        
+        
+    def activateText(self):
+        stat = self.sender().isChecked()
+        if stat:
+            self.ui.lineEdit_2.setEnabled(True)
+            self.ui.comboBox.setEnabled(False)
+            self.ui.lineEdit_2.setText("")
+        else:
+            self.ui.lineEdit_2.setEnabled(False)
+            self.ui.comboBox.setEnabled(True)
+            self.ui.lineEdit_2.setText("")
     
     def goToLink(self):
         button_name = self.sender().objectName()
@@ -36,13 +49,20 @@ class App(QtWidgets.QMainWindow):
         print("send log") 
         
     def getTemp(self):
+        
         selected_city = self.ui.comboBox.currentText()
+        
+        if self.ui.lineEdit_2.isEnabled() and self.ui.lineEdit_2.text() != "":
+            selected_city = self.ui.lineEdit_2.text()        
+        
         print(selected_city)
         if selected_city != "" and selected_city is not None:
             try:
                 jsonData = getWeatherData(selected_city)
                 t = jsonData["main"]["temp"]
                 self.ui.lcd_result.setProperty("value", t)
+                self.ui.lineEdit_2.setText("")
+                self.ui.lbl_selected_city.setText(selected_city)
             except Exception as e:
                 print(e)
         

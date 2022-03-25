@@ -417,8 +417,34 @@ QPushButton:hover
      <property name="text">
       <string>for more cities visit openweatehrmap.org</string>
      </property>
+     <property name="default">
+      <bool>false</bool>
+     </property>
      <property name="flat">
       <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lbl_selected_city">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>140</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: red;</string>
+     </property>
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </widget>
