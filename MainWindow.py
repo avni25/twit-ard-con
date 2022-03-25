@@ -18,7 +18,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.group_twitter = QtWidgets.QGroupBox(self.centralwidget)
-        self.group_twitter.setGeometry(QtCore.QRect(380, 290, 261, 231))
+        self.group_twitter.setGeometry(QtCore.QRect(380, 300, 261, 231))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.group_twitter.setFont(font)
@@ -75,7 +75,7 @@ class Ui_MainWindow(object):
         self.group_weatherapi.setStyleSheet("color: rgb(255, 68, 35);")
         self.group_weatherapi.setObjectName("group_weatherapi")
         self.lcd_result = QtWidgets.QLCDNumber(self.group_weatherapi)
-        self.lcd_result.setGeometry(QtCore.QRect(10, 170, 181, 61))
+        self.lcd_result.setGeometry(QtCore.QRect(10, 130, 181, 61))
         font = QtGui.QFont()
         font.setBold(False)
         font.setWeight(50)
@@ -112,7 +112,7 @@ class Ui_MainWindow(object):
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.btn_temp = QtWidgets.QPushButton(self.group_weatherapi)
-        self.btn_temp.setGeometry(QtCore.QRect(140, 120, 111, 41))
+        self.btn_temp.setGeometry(QtCore.QRect(130, 80, 111, 41))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.btn_temp.setFont(font)
@@ -151,21 +151,21 @@ class Ui_MainWindow(object):
         self.lineEdit_2.setReadOnly(False)
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.label_2 = QtWidgets.QLabel(self.group_weatherapi)
-        self.label_2.setGeometry(QtCore.QRect(210, 170, 31, 61))
+        self.label_2.setGeometry(QtCore.QRect(210, 130, 31, 61))
         font = QtGui.QFont()
         font.setPointSize(32)
         self.label_2.setFont(font)
         self.label_2.setStyleSheet("color: red;")
         self.label_2.setObjectName("label_2")
         self.btn_link_weather = QtWidgets.QPushButton(self.group_weatherapi)
-        self.btn_link_weather.setGeometry(QtCore.QRect(10, 240, 211, 23))
+        self.btn_link_weather.setGeometry(QtCore.QRect(0, 230, 211, 23))
         self.btn_link_weather.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_link_weather.setStyleSheet("color: blue;")
         self.btn_link_weather.setDefault(False)
         self.btn_link_weather.setFlat(True)
         self.btn_link_weather.setObjectName("btn_link_weather")
         self.lbl_selected_city = QtWidgets.QLabel(self.group_weatherapi)
-        self.lbl_selected_city.setGeometry(QtCore.QRect(10, 140, 101, 21))
+        self.lbl_selected_city.setGeometry(QtCore.QRect(10, 100, 101, 21))
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(True)
@@ -174,6 +174,29 @@ class Ui_MainWindow(object):
         self.lbl_selected_city.setStyleSheet("color: red;")
         self.lbl_selected_city.setText("")
         self.lbl_selected_city.setObjectName("lbl_selected_city")
+        self.btn_quickPost = QtWidgets.QPushButton(self.group_weatherapi)
+        self.btn_quickPost.setGeometry(QtCore.QRect(140, 200, 101, 31))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.btn_quickPost.setFont(font)
+        self.btn_quickPost.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_quickPost.setMouseTracking(False)
+        self.btn_quickPost.setToolTip("")
+        self.btn_quickPost.setStyleSheet("QPushButton{    \n"
+"    background-color: rgb(23, 96, 186);\n"
+"    color: white;\n"
+"    border-radius: 15px;\n"
+"    cursor: pointer;\n"
+"    \n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{   \n"
+"    background-color: rgb(34, 178, 255);\n"
+"    cursor: pointer;\n"
+"}\n"
+"")
+        self.btn_quickPost.setObjectName("btn_quickPost")
         self.group_arduino = QtWidgets.QGroupBox(self.centralwidget)
         self.group_arduino.setGeometry(QtCore.QRect(20, 10, 341, 481))
         font = QtGui.QFont()
@@ -289,6 +312,7 @@ class Ui_MainWindow(object):
         self.checkBox_manual.setText(_translate("MainWindow", "type manual"))
         self.label_2.setText(_translate("MainWindow", "C"))
         self.btn_link_weather.setText(_translate("MainWindow", "for more cities visit openweatehrmap.org"))
+        self.btn_quickPost.setText(_translate("MainWindow", "Quick Post"))
         self.group_arduino.setTitle(_translate("MainWindow", "Arduino"))
         self.btn_connect_arduino.setText(_translate("MainWindow", "Connect Arduino"))
         self.textedit_log.setPlainText(_translate("MainWindow", "qwe\n"

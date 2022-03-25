@@ -13,6 +13,7 @@ class App(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.btn_post.clicked.connect(self.post)
+        self.ui.btn_quickPost.clicked.connect(self.post)
         self.ui.btn_temp.clicked.connect(self.getTemp)
         self.ui.btn_connect_arduino.clicked.connect(self.connectArduino)
         self.ui.btn_send.clicked.connect(self.sendLog)
