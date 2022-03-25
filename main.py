@@ -5,10 +5,6 @@ from pprint import pprint
 
 
 
-cities = ["antalya","bursa","london", "berlin", "istanbul", "kyiv","prague",
-          "paris","hamburg","barcelona","madrid", "minsk", "moscow",
-          "dubai","cape town","sydney"]
-
 auth = tweepy.OAuthHandler(API_KEY, API_KEY_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 
@@ -68,5 +64,5 @@ def postTemp(cityname):
 
 
 
-
-
+# s = getWeatherData("antalya")
+# pprint(s)
