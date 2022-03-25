@@ -14,3 +14,9 @@ build-system-fman.io/qt-designer-download
 
 ## commands
 pyuic5 MainWindow.ui -o MainWindow.py  // update window components
+
+
+
+
+quick post buttonu olustur
+sehir ismi labelda yoksa deactivate button varsa activate
