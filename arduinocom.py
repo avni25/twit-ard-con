@@ -1,5 +1,5 @@
 import serial
-
+from datetime import datetime
 
 def readPort(PORT):
     print("connect arduino")
@@ -19,4 +19,5 @@ def readPort(PORT):
             res = line.decode("utf-8").rsplit("\r\n")[0]
             return res
             
-            
+
+

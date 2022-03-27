@@ -226,6 +226,7 @@ class Ui_MainWindow(object):
 "}")
         self.btn_connect_arduino.setObjectName("btn_connect_arduino")
         self.textedit_log = QtWidgets.QPlainTextEdit(self.group_arduino)
+        self.textedit_log.setEnabled(True)
         self.textedit_log.setGeometry(QtCore.QRect(0, 170, 311, 271))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -233,6 +234,7 @@ class Ui_MainWindow(object):
         self.textedit_log.setStyleSheet("color: green;\n"
 "background-color: black;")
         self.textedit_log.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.textedit_log.setReadOnly(True)
         self.textedit_log.setObjectName("textedit_log")
         self.lineEdit_log = QtWidgets.QLineEdit(self.group_arduino)
         self.lineEdit_log.setGeometry(QtCore.QRect(0, 440, 251, 31))
@@ -244,12 +246,11 @@ class Ui_MainWindow(object):
         self.lineEdit_log.setObjectName("lineEdit_log")
         self.lbl_connecton_status = QtWidgets.QLabel(self.group_arduino)
         self.lbl_connecton_status.setEnabled(False)
-        self.lbl_connecton_status.setGeometry(QtCore.QRect(140, 30, 131, 31))
+        self.lbl_connecton_status.setGeometry(QtCore.QRect(120, 20, 131, 21))
         font = QtGui.QFont()
-        font.setPointSize(16)
+        font.setPointSize(12)
         self.lbl_connecton_status.setFont(font)
         self.lbl_connecton_status.setStyleSheet("color:green")
-        self.lbl_connecton_status.setText("")
         self.lbl_connecton_status.setObjectName("lbl_connecton_status")
         self.label_4 = QtWidgets.QLabel(self.group_arduino)
         self.label_4.setGeometry(QtCore.QRect(10, 130, 41, 31))
@@ -277,7 +278,11 @@ class Ui_MainWindow(object):
 "}")
         self.btn_send.setObjectName("btn_send")
         self.lcd_ard = QtWidgets.QLCDNumber(self.group_arduino)
-        self.lcd_ard.setGeometry(QtCore.QRect(140, 80, 131, 41))
+        self.lcd_ard.setGeometry(QtCore.QRect(120, 50, 131, 71))
+        font = QtGui.QFont()
+        font.setPointSize(24)
+        self.lcd_ard.setFont(font)
+        self.lcd_ard.setDigitCount(6)
         self.lcd_ard.setObjectName("lcd_ard")
         self.btn_connect_arduino_2 = QtWidgets.QPushButton(self.group_arduino)
         self.btn_connect_arduino_2.setGeometry(QtCore.QRect(10, 80, 71, 41))
@@ -342,24 +347,8 @@ class Ui_MainWindow(object):
         self.btn_quickPost.setText(_translate("MainWindow", "Quick Post"))
         self.group_arduino.setTitle(_translate("MainWindow", "Arduino"))
         self.btn_connect_arduino.setText(_translate("MainWindow", "Connect"))
-        self.textedit_log.setPlainText(_translate("MainWindow", "qwe\n"
-"asd\n"
-"asd\n"
-"asd\n"
-"as\n"
-"dasd\n"
-"asd\n"
-"as\n"
-"das\n"
-"d\n"
-"asd\n"
-"a\n"
-"sd\n"
-"as\n"
-"d\n"
-"asd\n"
-"a\n"
-""))
+        self.textedit_log.setPlainText(_translate("MainWindow", "Logger:"))
+        self.lbl_connecton_status.setText(_translate("MainWindow", "qwe"))
         self.label_4.setText(_translate("MainWindow", "Log"))
         self.btn_send.setText(_translate("MainWindow", "Send"))
         self.btn_connect_arduino_2.setText(_translate("MainWindow", "Stop"))

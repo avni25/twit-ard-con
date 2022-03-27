@@ -551,6 +551,9 @@ QPushButton:hover
      </property>
     </widget>
     <widget class="QPlainTextEdit" name="textedit_log">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -571,25 +574,11 @@ background-color: black;</string>
      <property name="frameShadow">
       <enum>QFrame::Sunken</enum>
      </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
      <property name="plainText">
-      <string>qwe
-asd
-asd
-asd
-as
-dasd
-asd
-as
-das
-d
-asd
-a
-sd
-as
-d
-asd
-a
-</string>
+      <string>Logger:</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_log">
@@ -617,22 +606,22 @@ background-color: black;</string>
      </property>
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>30</y>
+       <x>120</x>
+       <y>20</y>
        <width>131</width>
-       <height>31</height>
+       <height>21</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>16</pointsize>
+       <pointsize>12</pointsize>
       </font>
      </property>
      <property name="styleSheet">
       <string notr="true">color:green</string>
      </property>
      <property name="text">
-      <string/>
+      <string>qwe</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">
@@ -691,11 +680,19 @@ QPushButton:hover
     <widget class="QLCDNumber" name="lcd_ard">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>80</y>
+       <x>120</x>
+       <y>50</y>
        <width>131</width>
-       <height>41</height>
+       <height>71</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>24</pointsize>
+      </font>
+     </property>
+     <property name="digitCount">
+      <number>6</number>
      </property>
     </widget>
     <widget class="QPushButton" name="btn_connect_arduino_2">

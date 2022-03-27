@@ -10,7 +10,7 @@ import webbrowser
 import serial
 import threading
 import time
-
+from datetime import datetime
 
 class App(QtWidgets.QMainWindow):
     
@@ -30,6 +30,7 @@ class App(QtWidgets.QMainWindow):
         self.ui.checkBox_manual.stateChanged.connect(self.activateText)
         self.t1 = threading.Thread(target=self.connectArduino)
         self.t1_stop = False
+        self.logText = ""
         
     def activateText(self):
         stat = self.sender().isChecked()
@@ -84,7 +85,8 @@ class App(QtWidgets.QMainWindow):
     def startConnection(self):
         self.t1_stop = False 
         self.ui.lbl_connecton_status.setStyleSheet("color: green")
-        self.ui.lbl_connecton_status.setText("connected")           
+        self.ui.lbl_connecton_status.setText("connected")
+        self.sendLog("Arduino started")        
         try:
             self.t1.start()                        
         except Exception as e:
@@ -93,11 +95,15 @@ class App(QtWidgets.QMainWindow):
 
     def stopConnection(self):
         self.t1_stop = True  
+        self.sendLog("Arduino pauesed")
         self.ui.lbl_connecton_status.setText("paused")
         self.ui.lbl_connecton_status.setStyleSheet("color: red")  
     
-    def sendLog(self):
-        print("send log") 
+    def sendLog(self, text):
+        time = datetime.now()
+        s = time.strftime("%d-%m-%Y %H:%M:%S")
+        self.logText += s+">>>"+text + "\n"
+        self.ui.textedit_log.setPlainText(self.logText) 
         
     def getTemp(self):
         
