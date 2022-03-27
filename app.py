@@ -24,7 +24,7 @@ class App(QtWidgets.QMainWindow):
         self.ui.btn_temp.clicked.connect(self.getTemp)
         self.ui.btn_connect_arduino.clicked.connect(self.startConnection)
         self.ui.btn_connect_arduino_2.clicked.connect(self.stopConnection)
-        self.ui.btn_send.clicked.connect(self.sendLog)
+        self.ui.btn_send.clicked.connect(self.addLog)
         self.ui.btn_link_twitter.clicked.connect(self.goToLink)
         self.ui.btn_link_weather.clicked.connect(self.goToLink)
         self.ui.checkBox_manual.stateChanged.connect(self.activateText)
@@ -49,8 +49,10 @@ class App(QtWidgets.QMainWindow):
         url_twitter  ="https://twitter.com/havni25"
         if button_name == "btn_link_twitter":
             webbrowser.open(url_twitter)
+            self.sendLog("Opened twitter")
         elif button_name == "btn_link_weather":
             webbrowser.open(url_weather)
+            self.sendLog("Opened weather")
         
     
     def connectArduino(self):
@@ -102,13 +104,22 @@ class App(QtWidgets.QMainWindow):
     def sendLog(self, text):
         time = datetime.now()
         s = time.strftime("%d-%m-%Y %H:%M:%S")
-        self.logText += s+">>>"+text + "\n"
+        sb = self.logText
+        self.logText = s+">>>"+text + "\n"+sb  
         self.ui.textedit_log.setPlainText(self.logText) 
+     
+    def addLog(self):
         
-    def getTemp(self):
+        try:
+            s = self.ui.lineEdit_log.text();
+            self.sendLog(s)
+            self.ui.lineEdit_log.setText("");
+        except Exception as e:
+            print(e)
+            pass
         
-        selected_city = self.ui.comboBox.currentText()
-        
+    def getTemp(self):        
+        selected_city = self.ui.comboBox.currentText()        
         if self.ui.lineEdit_2.isEnabled() and self.ui.lineEdit_2.text() != "":
             selected_city = self.ui.lineEdit_2.text()        
         
@@ -118,10 +129,12 @@ class App(QtWidgets.QMainWindow):
                 jsonData = getWeatherData(selected_city)
                 t = jsonData["main"]["temp"]
                 self.ui.lcd_result.setProperty("value", t)
+                self.sendLog("Temperature query successful for "+selected_city+". result: "+str(t))
                 self.ui.lineEdit_2.setText("")
                 self.ui.lbl_selected_city.setText(selected_city)
             except Exception as e:
                 print(e)
+                self.sendLog("Error getting temperature. "+e)
         
         
     def post(self):
@@ -133,12 +146,14 @@ class App(QtWidgets.QMainWindow):
                     post_tweet(result)
                     self.ui.txt_tweet.setText("")
                     print("tweet posted!!")
+                    self.sendLog("Tweet posted: "+result)
                     QMessageBox.about(self, "Success!!", "Tweet posted!!")
                 except Exception as e:
                     print(e)
                     QMessageBox.about(self, "Error!", "duplicate tweet!!!")
             else: 
                 print("couldn't post tweet. Empty text.")
+                self.sendLog("Error: attempted to post empty tweet")
         elif btn_name == "btn_quickPost":
             city_name = self.ui.lbl_selected_city.text()
             temp = self.ui.lcd_result.value()
@@ -147,9 +162,11 @@ class App(QtWidgets.QMainWindow):
                 try:
                     post_tweet(result)
                     print("tweet posted!!")
+                    self.sendLog("Quick Tweet posted: "+result)
                     QMessageBox.about(self, "Success!!", "Tweet posted!!")
                 except Exception as e:
                     print(e)
+                    self.sendLog("Error: attempted to post duplicate tweet")
                     QMessageBox.about(self, "Error!", "duplicate tweet!!!")
             
 def app():
