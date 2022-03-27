@@ -5,7 +5,7 @@ from PyQt5.QtGui import QIcon
 from MainWindow import Ui_MainWindow
 from main import post_tweet, getWeatherData
 from pprint import pprint
-from arduinocom import connectArd
+from arduinocom import readPort
 import webbrowser
 import serial
 import threading
@@ -13,7 +13,6 @@ import time
 
 
 class App(QtWidgets.QMainWindow):
-    
     
     
     def __init__(self):
@@ -29,7 +28,7 @@ class App(QtWidgets.QMainWindow):
         self.ui.btn_link_twitter.clicked.connect(self.goToLink)
         self.ui.btn_link_weather.clicked.connect(self.goToLink)
         self.ui.checkBox_manual.stateChanged.connect(self.activateText)
-        
+        self.t1 = threading.Thread(target=self.connectArduino)
         
     def activateText(self):
         stat = self.sender().isChecked()
@@ -51,29 +50,44 @@ class App(QtWidgets.QMainWindow):
         elif button_name == "btn_link_weather":
             webbrowser.open(url_weather)
         
-        
+    
     def connectArduino(self):
         print("connect arduino")
         ser = serial.Serial()
         print("serial object created")
         ser.baudrate = 9600
         print("baudrate set")
-        ser.port = 'COM7'
+        ser.port = "COM7"
         print("port set")
         ser.open()
         print("serial port opened")
+        
         while True:
             if ser.in_waiting:
                 line = ser.readline()
-                print(line.decode("utf-8").rsplit("\r\n")[0]) 
-                tempVal = line.decode("utf-8").rsplit("\r\n")[0] 
-                self.ui.lcd_ard.setProperty("value", tempVal)      
+                # print(line.decode("utf-8").rsplit("\r\n")[0])
+                res = line.decode("utf-8").rsplit("\r\n")[0]
+                time.sleep(0.5)
+                print(res)
+                try:
+                    self.printTemp(res)
+                except Exception as e:
+                    print(e)                    
+                    pass
+                
+    
+    def printTemp(self, temp):
+        self.ui.lcd_ard.setProperty("value", temp)                
 
     def startConnection(self):
-        t1.start()
+        try:
+            self.t1.start()
+        except Exception as e:
+            print(e)
+            pass
 
     def stopConnection(self):
-        pass       
+        self.printTemp("123")        
     
     def sendLog(self):
         print("send log") 
@@ -127,12 +141,14 @@ class App(QtWidgets.QMainWindow):
             
 def app():
     app = QtWidgets.QApplication(sys.argv)
-    win = App()
+    win = App()    
     win.show()
     sys.exit(app.exec_())
 
 
-t1 = threading.Thread(target=App.connectArduino, args=(App,))
+ 
+# t1 = threading.Thread(target=App.connectArduino, args=(App,))
+
 
 app()    
 
