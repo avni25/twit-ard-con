@@ -6,6 +6,8 @@ from MainWindow import Ui_MainWindow
 from main import post_tweet, getWeatherData
 from pprint import pprint
 import webbrowser
+import serial
+
 
 class App(QtWidgets.QMainWindow):
     def __init__(self):
@@ -45,7 +47,15 @@ class App(QtWidgets.QMainWindow):
         
     def connectArduino(self):
         print("connect arduino")
-    
+        ser = serial.Serial()
+        ser.baudrate = 9600
+        ser.port = 'COM7'
+        ser.open()
+        while True:
+            if ser.in_waiting:
+                line = ser.readline()
+                print(line.decode("utf-8").rsplit("\r\n")[0])
+           
     def sendLog(self):
         print("send log") 
         

@@ -606,6 +606,10 @@ a
        <pointsize>12</pointsize>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true">color: green;
+background-color: black;</string>
+     </property>
     </widget>
     <widget class="QLabel" name="lbl_connecton_status">
      <property name="enabled">
