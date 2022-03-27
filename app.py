@@ -29,6 +29,7 @@ class App(QtWidgets.QMainWindow):
         self.ui.btn_link_weather.clicked.connect(self.goToLink)
         self.ui.checkBox_manual.stateChanged.connect(self.activateText)
         self.t1 = threading.Thread(target=self.connectArduino)
+        self.t1_stop = False
         
     def activateText(self):
         stat = self.sender().isChecked()
@@ -60,9 +61,10 @@ class App(QtWidgets.QMainWindow):
         ser.port = "COM7"
         print("port set")
         ser.open()
-        print("serial port opened")
-        
+        print("serial port opened")          
         while True:
+            if self.t1_stop: 
+                continue               
             if ser.in_waiting:
                 line = ser.readline()
                 # print(line.decode("utf-8").rsplit("\r\n")[0])
@@ -74,20 +76,25 @@ class App(QtWidgets.QMainWindow):
                 except Exception as e:
                     print(e)                    
                     pass
-                
+                    
     
     def printTemp(self, temp):
         self.ui.lcd_ard.setProperty("value", temp)                
 
     def startConnection(self):
+        self.t1_stop = False 
+        self.ui.lbl_connecton_status.setStyleSheet("color: green")
+        self.ui.lbl_connecton_status.setText("connected")           
         try:
-            self.t1.start()
+            self.t1.start()                        
         except Exception as e:
             print(e)
             pass
 
     def stopConnection(self):
-        self.printTemp("123")        
+        self.t1_stop = True  
+        self.ui.lbl_connecton_status.setText("paused")
+        self.ui.lbl_connecton_status.setStyleSheet("color: red")  
     
     def sendLog(self):
         print("send log") 
