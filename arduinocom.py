@@ -1,7 +1,7 @@
 import serial
 
 
-def connectArduino():
+def connectArd():
     print("connect arduino")
     ser = serial.Serial()
     print("serial object created")
@@ -18,5 +18,4 @@ def connectArduino():
             
             
             
-connectArduino()
 

@@ -5,11 +5,17 @@ from PyQt5.QtGui import QIcon
 from MainWindow import Ui_MainWindow
 from main import post_tweet, getWeatherData
 from pprint import pprint
+from arduinocom import connectArd
 import webbrowser
 import serial
+import threading
+import time
 
 
 class App(QtWidgets.QMainWindow):
+    
+    
+    
     def __init__(self):
         super(App, self).__init__()
         self.ui = Ui_MainWindow()
@@ -17,7 +23,8 @@ class App(QtWidgets.QMainWindow):
         self.ui.btn_post.clicked.connect(self.post)
         self.ui.btn_quickPost.clicked.connect(self.post)
         self.ui.btn_temp.clicked.connect(self.getTemp)
-        self.ui.btn_connect_arduino.clicked.connect(self.connectArduino)
+        self.ui.btn_connect_arduino.clicked.connect(self.startConnection)
+        self.ui.btn_connect_arduino_2.clicked.connect(self.stopConnection)
         self.ui.btn_send.clicked.connect(self.sendLog)
         self.ui.btn_link_twitter.clicked.connect(self.goToLink)
         self.ui.btn_link_weather.clicked.connect(self.goToLink)
@@ -48,14 +55,26 @@ class App(QtWidgets.QMainWindow):
     def connectArduino(self):
         print("connect arduino")
         ser = serial.Serial()
+        print("serial object created")
         ser.baudrate = 9600
+        print("baudrate set")
         ser.port = 'COM7'
+        print("port set")
         ser.open()
+        print("serial port opened")
         while True:
             if ser.in_waiting:
                 line = ser.readline()
-                print(line.decode("utf-8").rsplit("\r\n")[0])
-           
+                print(line.decode("utf-8").rsplit("\r\n")[0]) 
+                tempVal = line.decode("utf-8").rsplit("\r\n")[0] 
+                self.ui.lcd_ard.setProperty("value", tempVal)      
+
+    def startConnection(self):
+        t1.start()
+
+    def stopConnection(self):
+        pass       
+    
     def sendLog(self):
         print("send log") 
         
@@ -112,6 +131,8 @@ def app():
     win.show()
     sys.exit(app.exec_())
 
+
+t1 = threading.Thread(target=App.connectArduino, args=(App,))
 
 app()    
 
