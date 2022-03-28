@@ -47,6 +47,9 @@ class Ui_MainWindow(object):
 "    cursor: pointer;\n"
 "}\n"
 "")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("tw3.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_post.setIcon(icon)
         self.btn_post.setObjectName("btn_post")
         self.label = QtWidgets.QLabel(self.group_twitter)
         self.label.setGeometry(QtCore.QRect(10, 30, 131, 31))
@@ -75,7 +78,7 @@ class Ui_MainWindow(object):
         self.group_weatherapi.setStyleSheet("color: rgb(255, 68, 35);")
         self.group_weatherapi.setObjectName("group_weatherapi")
         self.lcd_result = QtWidgets.QLCDNumber(self.group_weatherapi)
-        self.lcd_result.setGeometry(QtCore.QRect(10, 130, 181, 61))
+        self.lcd_result.setGeometry(QtCore.QRect(10, 100, 181, 61))
         font = QtGui.QFont()
         font.setBold(False)
         font.setWeight(50)
@@ -112,7 +115,7 @@ class Ui_MainWindow(object):
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.btn_temp = QtWidgets.QPushButton(self.group_weatherapi)
-        self.btn_temp.setGeometry(QtCore.QRect(130, 80, 111, 41))
+        self.btn_temp.setGeometry(QtCore.QRect(10, 200, 111, 31))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.btn_temp.setFont(font)
@@ -120,7 +123,7 @@ class Ui_MainWindow(object):
         self.btn_temp.setStyleSheet("QPushButton{\n"
 "    background-color: rgb(184, 61, 0);\n"
 "    color: white;\n"
-"    border-radius: 20px;\n"
+"    border-radius: 15px;\n"
 "    cursor: pointer;\n"
 "    border: 1px solid red;\n"
 "}\n"
@@ -151,7 +154,7 @@ class Ui_MainWindow(object):
         self.lineEdit_2.setReadOnly(False)
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.label_2 = QtWidgets.QLabel(self.group_weatherapi)
-        self.label_2.setGeometry(QtCore.QRect(200, 150, 41, 41))
+        self.label_2.setGeometry(QtCore.QRect(200, 120, 41, 41))
         font = QtGui.QFont()
         font.setPointSize(28)
         self.label_2.setFont(font)
@@ -199,7 +202,7 @@ class Ui_MainWindow(object):
 "")
         self.btn_quickPost.setObjectName("btn_quickPost")
         self.group_arduino = QtWidgets.QGroupBox(self.centralwidget)
-        self.group_arduino.setGeometry(QtCore.QRect(10, 30, 361, 481))
+        self.group_arduino.setGeometry(QtCore.QRect(10, 30, 361, 501))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.group_arduino.setFont(font)
@@ -227,7 +230,7 @@ class Ui_MainWindow(object):
         self.btn_connect_arduino.setObjectName("btn_connect_arduino")
         self.textedit_log = QtWidgets.QPlainTextEdit(self.group_arduino)
         self.textedit_log.setEnabled(True)
-        self.textedit_log.setGeometry(QtCore.QRect(0, 170, 351, 271))
+        self.textedit_log.setGeometry(QtCore.QRect(0, 190, 351, 271))
         font = QtGui.QFont()
         font.setPointSize(8)
         self.textedit_log.setFont(font)
@@ -238,7 +241,7 @@ class Ui_MainWindow(object):
         self.textedit_log.setCenterOnScroll(False)
         self.textedit_log.setObjectName("textedit_log")
         self.lineEdit_log = QtWidgets.QLineEdit(self.group_arduino)
-        self.lineEdit_log.setGeometry(QtCore.QRect(0, 440, 291, 31))
+        self.lineEdit_log.setGeometry(QtCore.QRect(0, 460, 291, 31))
         font = QtGui.QFont()
         font.setPointSize(8)
         self.lineEdit_log.setFont(font)
@@ -247,7 +250,7 @@ class Ui_MainWindow(object):
         self.lineEdit_log.setObjectName("lineEdit_log")
         self.lbl_connecton_status = QtWidgets.QLabel(self.group_arduino)
         self.lbl_connecton_status.setEnabled(False)
-        self.lbl_connecton_status.setGeometry(QtCore.QRect(120, 20, 131, 21))
+        self.lbl_connecton_status.setGeometry(QtCore.QRect(220, 20, 131, 21))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.lbl_connecton_status.setFont(font)
@@ -260,7 +263,7 @@ class Ui_MainWindow(object):
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
         self.btn_send = QtWidgets.QPushButton(self.group_arduino)
-        self.btn_send.setGeometry(QtCore.QRect(290, 440, 61, 31))
+        self.btn_send.setGeometry(QtCore.QRect(290, 460, 61, 31))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.btn_send.setFont(font)
@@ -279,7 +282,7 @@ class Ui_MainWindow(object):
 "}")
         self.btn_send.setObjectName("btn_send")
         self.lcd_ard = QtWidgets.QLCDNumber(self.group_arduino)
-        self.lcd_ard.setGeometry(QtCore.QRect(120, 50, 131, 71))
+        self.lcd_ard.setGeometry(QtCore.QRect(220, 50, 131, 41))
         font = QtGui.QFont()
         font.setPointSize(24)
         self.lcd_ard.setFont(font)
@@ -305,6 +308,16 @@ class Ui_MainWindow(object):
 "    cursor: pointer;\n"
 "}")
         self.btn_connect_arduino_2.setObjectName("btn_connect_arduino_2")
+        self.lbl_autoTweet = QtWidgets.QLabel(self.group_arduino)
+        self.lbl_autoTweet.setGeometry(QtCore.QRect(330, 100, 21, 21))
+        self.lbl_autoTweet.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.lbl_autoTweet.setText("")
+        self.lbl_autoTweet.setPixmap(QtGui.QPixmap("tw3.ico"))
+        self.lbl_autoTweet.setScaledContents(True)
+        self.lbl_autoTweet.setObjectName("lbl_autoTweet")
+        self.checkBox_isAuto = QtWidgets.QCheckBox(self.group_arduino)
+        self.checkBox_isAuto.setGeometry(QtCore.QRect(210, 100, 111, 21))
+        self.checkBox_isAuto.setObjectName("checkBox_isAuto")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 652, 21))
@@ -353,3 +366,5 @@ class Ui_MainWindow(object):
         self.label_4.setText(_translate("MainWindow", "Log"))
         self.btn_send.setText(_translate("MainWindow", "Send"))
         self.btn_connect_arduino_2.setText(_translate("MainWindow", "Stop"))
+        self.lbl_autoTweet.setToolTip(_translate("MainWindow", "post arduino temperature to Twitter"))
+        self.checkBox_isAuto.setText(_translate("MainWindow", "auto tweet"))

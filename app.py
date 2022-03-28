@@ -21,17 +21,21 @@ class App(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.ui.btn_post.clicked.connect(self.post)
         self.ui.btn_quickPost.clicked.connect(self.post)
+        # self.ui.lbl_autoTweet.mousePressEvent(self.showinfo)
         self.ui.btn_temp.clicked.connect(self.getTemp)
         self.ui.btn_connect_arduino.clicked.connect(self.startConnection)
         self.ui.btn_connect_arduino_2.clicked.connect(self.stopConnection)
         self.ui.btn_send.clicked.connect(self.addLog)
         self.ui.btn_link_twitter.clicked.connect(self.goToLink)
-        self.ui.btn_link_weather.clicked.connect(self.goToLink)
+        self.ui.btn_link_weather.clicked.connect(self.goToLink)        
         self.ui.checkBox_manual.stateChanged.connect(self.activateText)
         self.t1 = threading.Thread(target=self.connectArduino)
         self.t1_stop = False
         self.logText = ""
         
+    def showinfo(self):
+        pritn("info")
+    
     def activateText(self):
         stat = self.sender().isChecked()
         if stat:
@@ -76,6 +80,7 @@ class App(QtWidgets.QMainWindow):
                 print(res)
                 try:
                     self.printTemp(res)
+                    
                 except Exception as e:
                     print(e)                    
                     pass
@@ -168,6 +173,8 @@ class App(QtWidgets.QMainWindow):
                     print(e)
                     self.sendLog("Error: attempted to post duplicate tweet")
                     QMessageBox.about(self, "Error!", "duplicate tweet!!!")
+        elif btn_name == "lbl_autoTweet":
+            print("auto tweet")
             
 def app():
     app = QtWidgets.QApplication(sys.argv)

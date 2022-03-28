@@ -77,6 +77,10 @@ QPushButton:hover
      <property name="text">
       <string>Post</string>
      </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>tw3.ico</normaloff>tw3.ico</iconset>
+     </property>
     </widget>
     <widget class="QLabel" name="label">
      <property name="geometry">
@@ -168,7 +172,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>130</y>
+       <y>100</y>
        <width>181</width>
        <height>61</height>
       </rect>
@@ -291,10 +295,10 @@ p, li { white-space: pre-wrap; }
     <widget class="QPushButton" name="btn_temp">
      <property name="geometry">
       <rect>
-       <x>130</x>
-       <y>80</y>
+       <x>10</x>
+       <y>200</y>
        <width>111</width>
-       <height>41</height>
+       <height>31</height>
       </rect>
      </property>
      <property name="font">
@@ -309,7 +313,7 @@ p, li { white-space: pre-wrap; }
       <string notr="true">QPushButton{
 	background-color: rgb(184, 61, 0);
 	color: white;
-	border-radius: 20px;
+	border-radius: 15px;
 	cursor: pointer;
 	border: 1px solid red;
 }
@@ -382,7 +386,7 @@ QPushButton:hover
      <property name="geometry">
       <rect>
        <x>200</x>
-       <y>150</y>
+       <y>120</y>
        <width>41</width>
        <height>41</height>
       </rect>
@@ -500,7 +504,7 @@ QPushButton:hover
       <x>10</x>
       <y>30</y>
       <width>361</width>
-      <height>481</height>
+      <height>501</height>
      </rect>
     </property>
     <property name="font">
@@ -557,7 +561,7 @@ QPushButton:hover
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>170</y>
+       <y>190</y>
        <width>351</width>
        <height>271</height>
       </rect>
@@ -588,7 +592,7 @@ background-color: black;</string>
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>440</y>
+       <y>460</y>
        <width>291</width>
        <height>31</height>
       </rect>
@@ -609,7 +613,7 @@ background-color: black;</string>
      </property>
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>220</x>
        <y>20</y>
        <width>131</width>
        <height>21</height>
@@ -649,7 +653,7 @@ background-color: black;</string>
      <property name="geometry">
       <rect>
        <x>290</x>
-       <y>440</y>
+       <y>460</y>
        <width>61</width>
        <height>31</height>
       </rect>
@@ -683,10 +687,10 @@ QPushButton:hover
     <widget class="QLCDNumber" name="lcd_ard">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>220</x>
        <y>50</y>
        <width>131</width>
-       <height>71</height>
+       <height>41</height>
       </rect>
      </property>
      <property name="font">
@@ -732,6 +736,44 @@ QPushButton:hover
      </property>
      <property name="text">
       <string>Stop</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lbl_autoTweet">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>100</y>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="toolTip">
+      <string>post arduino temperature to Twitter</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>tw3.ico</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_isAuto">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>100</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>auto tweet</string>
      </property>
     </widget>
    </widget>
