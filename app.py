@@ -8,6 +8,7 @@ from pprint import pprint
 from arduinocom import readPort
 import webbrowser
 import serial
+import serial.tools.list_ports
 import threading
 import time
 from datetime import datetime
@@ -32,11 +33,14 @@ class App(QtWidgets.QMainWindow):
         self.ui.btn_send.clicked.connect(self.addLog)
         self.ui.btn_link_twitter.clicked.connect(self.goToLink)
         self.ui.btn_link_weather.clicked.connect(self.goToLink)        
-        self.ui.checkBox_manual.stateChanged.connect(self.activateText)
+        self.ui.checkBox_manual.stateChanged.connect(self.activateText)  
+        self.ui.lbl_postTweet.mousePressEvent(self.showinfo)      
         self.t1 = threading.Thread(target=self.connectArduino)
         self.t1_stop = False
         self.logText = ""
-        
+        ports = list(serial.tools.list_ports.comports())
+        for p in ports:            
+            print(p)
         
     def showinfo(self):
         pritn("info")
@@ -70,7 +74,7 @@ class App(QtWidgets.QMainWindow):
         print("serial object created")
         ser.baudrate = 9600
         print("baudrate set")
-        ser.port = "COM7"
+        ser.port = self.ui.comboBox_port.currentText()
         print("port set")
         ser.open()
         print("serial port opened")          
@@ -122,6 +126,9 @@ class App(QtWidgets.QMainWindow):
         
         try:
             s = self.ui.lineEdit_log.text();
+            # ******************************
+            #  komut kontrol
+            # *************************
             self.sendLog(s)
             self.ui.lineEdit_log.setText("");
         except Exception as e:
