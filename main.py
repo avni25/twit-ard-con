@@ -1,12 +1,14 @@
 import tweepy
 import requests
-from config import *
 from pprint import pprint
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 
-
-auth = tweepy.OAuthHandler(API_KEY, API_KEY_SECRET)
-auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+auth = tweepy.OAuthHandler(os.getenv("API_KEY"), os.getenv("API_KEY_SECRET"))
+auth.set_access_token(os.getenv("ACCESS_TOKEN"), os.getenv("ACCESS_TOKEN_SECRET"))
 
 api = tweepy.API(auth)
 
@@ -15,10 +17,6 @@ username = "havni25"
 
 # Get the User object for twitter...
 user = api.get_user(screen_name = username)
-print(user.screen_name)
-print(user.followers_count)
-print(user.friends_count)
-print("---------------------")
 
 
 def get_followingList():
@@ -30,11 +28,11 @@ def post_tweet(tweet_text):
    api.update_status(tweet_text)
 
 def get_user_tweets():
-   user_tweets = api.user_timeline()
+   user_tweets = api.user_timeline(count=100)
    tweetList = []
    for tweet in user_tweets:
-      print(tweet.id_str)
-      print(tweet.text)
+      # print(tweet.id_str)
+      # print(tweet.text)
       tweetList.append({
          "id": tweet.id,
          "text": tweet.text
@@ -63,6 +61,13 @@ def postTemp(cityname):
       print("can not post tweet. no data!!!")
 
 
+# tweet_list = get_user_tweets()
+print('Twitter\nAccount user name: {0}'.format(user.screen_name))
+print('Followers: {0}'.format(user.followers_count))
+print('Following: {0}'.format(user.friends_count))
+print('Tweets: {0}'.format(user.statuses_count))
 
-# s = getWeatherData("antalya")
-# pprint(s)
+print("---------------------")
+
+
+
