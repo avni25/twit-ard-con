@@ -47,7 +47,7 @@ def delete_tweet(id):
 
 
 def getWeatherData(cityname):
-   res = requests.get('https://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}&units=metric'.format(cityname, WEATHER_API_KEY));
+   res = requests.get('https://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}&units=metric'.format(cityname, os.getenv("WEATHER_API_KEY")));
    pprint(res.json()["main"]["temp"])
    return res.json()
 
