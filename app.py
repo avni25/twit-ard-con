@@ -3,7 +3,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QToolTip, QMessageBox
 from PyQt5.QtGui import QIcon
 from MainWindow import Ui_MainWindow
-from main import post_tweet, getWeatherData
+from main import TwitterAccount, getWeatherData
 from pprint import pprint
 from arduinocom import readPort
 import webbrowser
