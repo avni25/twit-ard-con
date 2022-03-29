@@ -172,7 +172,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>100</y>
+       <y>120</y>
        <width>181</width>
        <height>61</height>
       </rect>
@@ -386,7 +386,7 @@ QPushButton:hover
      <property name="geometry">
       <rect>
        <x>200</x>
-       <y>120</y>
+       <y>140</y>
        <width>41</width>
        <height>41</height>
       </rect>
@@ -432,7 +432,7 @@ QPushButton:hover
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>100</y>
+       <y>90</y>
        <width>101</width>
        <height>21</height>
       </rect>
@@ -613,9 +613,9 @@ background-color: black;</string>
      </property>
      <property name="geometry">
       <rect>
-       <x>220</x>
+       <x>100</x>
        <y>20</y>
-       <width>131</width>
+       <width>111</width>
        <height>21</height>
       </rect>
      </property>
@@ -687,8 +687,8 @@ QPushButton:hover
     <widget class="QLCDNumber" name="lcd_ard">
      <property name="geometry">
       <rect>
-       <x>220</x>
-       <y>50</y>
+       <x>210</x>
+       <y>140</y>
        <width>131</width>
        <height>41</height>
       </rect>
@@ -742,7 +742,7 @@ QPushButton:hover
      <property name="geometry">
       <rect>
        <x>330</x>
-       <y>100</y>
+       <y>110</y>
        <width>21</width>
        <height>21</height>
       </rect>
@@ -767,7 +767,7 @@ QPushButton:hover
      <property name="geometry">
       <rect>
        <x>210</x>
-       <y>100</y>
+       <y>110</y>
        <width>111</width>
        <height>21</height>
       </rect>

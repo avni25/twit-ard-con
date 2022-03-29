@@ -37,6 +37,7 @@ class App(QtWidgets.QMainWindow):
         self.t1_stop = False
         self.logText = ""
         
+        
     def showinfo(self):
         pritn("info")
     
@@ -148,11 +149,13 @@ class App(QtWidgets.QMainWindow):
         
     def post(self):
         btn_name = self.sender().objectName()
+        account = TwitterAccount()
         if btn_name == "btn_post":
             result = self.ui.txt_tweet.toPlainText()
             if result != "" and result is not None:
                 try:
-                    post_tweet(result)
+                    # post_tweet(result)
+                    account.post(result)
                     self.ui.txt_tweet.setText("")
                     print("tweet posted!!")
                     self.sendLog("Tweet posted: "+result)
@@ -169,7 +172,7 @@ class App(QtWidgets.QMainWindow):
             if city_name != "" and city_name is not None :
                 result = "Weather in " + city_name + " is " + str(temp) + " °C"
                 try:
-                    post_tweet(result)
+                    account.post(result)
                     print("tweet posted!!")
                     self.sendLog("Quick Tweet posted: "+result)
                     QMessageBox.about(self, "Success!!", "Tweet posted!!")
