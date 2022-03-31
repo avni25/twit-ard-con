@@ -12,7 +12,7 @@ import serial.tools.list_ports
 import threading
 import time
 from datetime import datetime
-
+from styles import *
 
 
 
@@ -35,14 +35,14 @@ class App(QtWidgets.QMainWindow):
         self.ui.checkBox_manual.stateChanged.connect(self.activateText)
         self.ui.checkBox_isAuto.stateChanged.connect(self.setAutoSent)    
         self.ui.btn_tweetArduinoTemp.clicked.connect(self.setAutoSent)     
-        self.t1 = threading.Thread(target=self.connectArduino)
-        
+        self.t1 = threading.Thread(target=self.connectArduino)        
         self.t1_stop = False
         self.isAuto = False
         self.logText = ""
         ports = list(serial.tools.list_ports.comports())
         for p in ports:            
             print(p)
+        
         
     def setAutoSent(self):
         self.isAuto = not self.isAuto
@@ -81,26 +81,27 @@ class App(QtWidgets.QMainWindow):
         print("port set")
         ser.open()
         print("serial port opened")          
-        while not self.t1_stop:                           
-            if ser.in_waiting:
-                line = ser.readline()
-                # print(line.decode("utf-8").rsplit("\r\n")[0])
-                res = line.decode("utf-8").rsplit("\r\n")[0]
-                time.sleep(0.5)
-                print(res)
-                try:
-                    self.printTemp(res)
-                    
-                except Exception as e:
-                    print(e)                    
-                    pass
+        while True:
+            if not self.t1_stop:                           
+                if ser.in_waiting:
+                    line = ser.readline()
+                    # print(line.decode("utf-8").rsplit("\r\n")[0])
+                    res = line.decode("utf-8").rsplit("\r\n")[0]
+                    time.sleep(0.5)
+                    print(res)
+                    try:
+                        self.printTemp(res)
+                        
+                    except Exception as e:
+                        print(e)                    
+                        pass
+            
                     
     
     def printTemp(self, temp):
         self.ui.lcd_ard.setProperty("value", temp)                
 
-    def startConnection(self):
-        self.t1_stop = False 
+    def startConnection(self):       
         
         self.sendLog("Arduino started")        
         try:
@@ -117,10 +118,14 @@ class App(QtWidgets.QMainWindow):
             self.ui.lbl_connecton_status.setStyleSheet("color: red")
             self.ui.lbl_connecton_status.setText("disconnected")
             self.sendLog("Arduino stopped")  
+            self.ui.btn_connect_arduino_2.setText("resume")
+            self.ui.btn_connect_arduino_2.setStyleSheet(style_btn_resume)
         else:
             self.ui.lbl_connecton_status.setStyleSheet("color: green")
             self.ui.lbl_connecton_status.setText("connected")
             self.sendLog("Arduino started")
+            self.ui.btn_connect_arduino_2.setText("pause")
+            self.ui.btn_connect_arduino_2.setStyleSheet(style_btn_pause)
     
     def sendLog(self, text):
         time = datetime.now()
