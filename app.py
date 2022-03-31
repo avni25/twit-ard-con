@@ -5,7 +5,6 @@ from PyQt5.QtGui import QIcon
 from MainWindow import Ui_MainWindow
 from main import TwitterAccount, getWeatherData
 from pprint import pprint
-from arduinocom import readPort
 import webbrowser
 import serial
 import serial.tools.list_ports
@@ -84,8 +83,7 @@ class App(QtWidgets.QMainWindow):
         while True:
             if not self.t1_stop:                           
                 if ser.in_waiting:
-                    line = ser.readline()
-                    # print(line.decode("utf-8").rsplit("\r\n")[0])
+                    line = ser.readline()                    
                     res = line.decode("utf-8").rsplit("\r\n")[0]
                     time.sleep(0.5)
                     if self.isAuto:
@@ -213,9 +211,6 @@ def app():
     win.show()
     sys.exit(app.exec_())
 
-
- 
-# t1 = threading.Thread(target=App.connectArduino, args=(App,))
 
 
 app()    

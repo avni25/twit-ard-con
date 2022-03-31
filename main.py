@@ -27,8 +27,10 @@ class TwitterAccount():
       for tweet in user_tweets:
          print(tweet.id_str)
          print(tweet.text)
+         print(tweet.created_at)
          tweetList.append({
             "id": tweet.id,
+            "created_at": tweet.created_at,
             "text": tweet.text
          })
       
@@ -56,6 +58,5 @@ def getWeatherData(cityname):
 
 
 # c = TwitterAccount("elonmusk")
-# c.info()
-# c.post("qweasdzxc")
+# pprint(c.get_tweets())
 
