@@ -88,6 +88,12 @@ class App(QtWidgets.QMainWindow):
                     # print(line.decode("utf-8").rsplit("\r\n")[0])
                     res = line.decode("utf-8").rsplit("\r\n")[0]
                     time.sleep(0.5)
+                    if self.isAuto:
+                        limitTemp = float(self.ui.lineEdit_limitTemp.text())
+                        if limitTemp < float(res):
+                            print("send post")
+                            self.isAuto = False
+                            self.ui.checkBox_isAuto.setChecked(False)    
                     print(res)
                     try:
                         self.printTemp(res)
@@ -173,7 +179,6 @@ class App(QtWidgets.QMainWindow):
             result = self.ui.txt_tweet.toPlainText()
             if result != "" and result is not None:
                 try:
-                    # post_tweet(result)
                     account.post(result)
                     self.ui.txt_tweet.setText("")
                     print("tweet posted!!")

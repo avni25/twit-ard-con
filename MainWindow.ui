@@ -742,14 +742,19 @@ QPushButton:hover
     <widget class="QCheckBox" name="checkBox_isAuto">
      <property name="geometry">
       <rect>
-       <x>150</x>
-       <y>100</y>
-       <width>111</width>
+       <x>10</x>
+       <y>160</y>
+       <width>151</width>
        <height>21</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>auto tweet</string>
+      <string>auto tweet if Temp &gt;=</string>
      </property>
     </widget>
     <widget class="QComboBox" name="comboBox_port">
@@ -836,6 +841,24 @@ QPushButton:hover
      </property>
      <property name="flat">
       <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_limitTemp">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>160</y>
+       <width>31</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>25</string>
      </property>
     </widget>
    </widget>
