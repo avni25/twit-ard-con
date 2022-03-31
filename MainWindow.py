@@ -179,16 +179,30 @@ class Ui_MainWindow(object):
         self.lbl_selected_city.setObjectName("lbl_selected_city")
         self.btn_quickPost = QtWidgets.QPushButton(self.group_weatherapi)
         self.btn_quickPost.setEnabled(True)
-        self.btn_quickPost.setGeometry(QtCore.QRect(210, 210, 31, 21))
+        self.btn_quickPost.setGeometry(QtCore.QRect(150, 200, 91, 31))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.btn_quickPost.setFont(font)
         self.btn_quickPost.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_quickPost.setMouseTracking(False)
-        self.btn_quickPost.setStyleSheet("")
-        self.btn_quickPost.setText("")
+        self.btn_quickPost.setAutoFillBackground(False)
+        self.btn_quickPost.setStyleSheet("QPushButton{    \n"
+"    background-color: rgb(23, 96, 186);\n"
+"    color: white;\n"
+"    border-radius: 15px;\n"
+"    cursor: pointer;\n"
+"    \n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{   \n"
+"    background-color: rgb(34, 178, 255);\n"
+"    cursor: pointer;\n"
+"}\n"
+"")
         self.btn_quickPost.setIcon(icon)
-        self.btn_quickPost.setIconSize(QtCore.QSize(25, 25))
+        self.btn_quickPost.setIconSize(QtCore.QSize(16, 16))
+        self.btn_quickPost.setDefault(False)
         self.btn_quickPost.setFlat(True)
         self.btn_quickPost.setObjectName("btn_quickPost")
         self.group_arduino = QtWidgets.QGroupBox(self.centralwidget)
@@ -246,12 +260,6 @@ class Ui_MainWindow(object):
         self.lbl_connecton_status.setFont(font)
         self.lbl_connecton_status.setStyleSheet("color:green")
         self.lbl_connecton_status.setObjectName("lbl_connecton_status")
-        self.label_4 = QtWidgets.QLabel(self.group_arduino)
-        self.label_4.setGeometry(QtCore.QRect(10, 130, 41, 31))
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        self.label_4.setFont(font)
-        self.label_4.setObjectName("label_4")
         self.btn_send = QtWidgets.QPushButton(self.group_arduino)
         self.btn_send.setGeometry(QtCore.QRect(290, 460, 61, 31))
         font = QtGui.QFont()
@@ -299,7 +307,7 @@ class Ui_MainWindow(object):
 "}")
         self.btn_connect_arduino_2.setObjectName("btn_connect_arduino_2")
         self.checkBox_isAuto = QtWidgets.QCheckBox(self.group_arduino)
-        self.checkBox_isAuto.setGeometry(QtCore.QRect(210, 110, 111, 21))
+        self.checkBox_isAuto.setGeometry(QtCore.QRect(150, 100, 111, 21))
         self.checkBox_isAuto.setObjectName("checkBox_isAuto")
         self.comboBox_port = QtWidgets.QComboBox(self.group_arduino)
         self.comboBox_port.setGeometry(QtCore.QRect(100, 30, 61, 21))
@@ -311,14 +319,27 @@ class Ui_MainWindow(object):
         self.comboBox_port.addItem("")
         self.comboBox_port.addItem("")
         self.comboBox_port.addItem("")
-        self.pushButton = QtWidgets.QPushButton(self.group_arduino)
-        self.pushButton.setGeometry(QtCore.QRect(320, 110, 21, 21))
-        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton.setText("")
-        self.pushButton.setIcon(icon)
-        self.pushButton.setIconSize(QtCore.QSize(25, 25))
-        self.pushButton.setFlat(True)
-        self.pushButton.setObjectName("pushButton")
+        self.btn_tweetArduinoTemp = QtWidgets.QPushButton(self.group_arduino)
+        self.btn_tweetArduinoTemp.setGeometry(QtCore.QRect(270, 90, 81, 31))
+        self.btn_tweetArduinoTemp.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_tweetArduinoTemp.setStyleSheet("QPushButton{    \n"
+"    background-color: rgb(23, 96, 186);\n"
+"    color: white;\n"
+"    border-radius: 15px;\n"
+"    cursor: pointer;\n"
+"    \n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{   \n"
+"    background-color: rgb(34, 178, 255);\n"
+"    cursor: pointer;\n"
+"}\n"
+"")
+        self.btn_tweetArduinoTemp.setIcon(icon)
+        self.btn_tweetArduinoTemp.setIconSize(QtCore.QSize(16, 16))
+        self.btn_tweetArduinoTemp.setFlat(True)
+        self.btn_tweetArduinoTemp.setObjectName("btn_tweetArduinoTemp")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 652, 21))
@@ -360,11 +381,11 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "°C"))
         self.btn_link_weather.setText(_translate("MainWindow", "for more cities visit openweatehrmap.org"))
         self.btn_quickPost.setToolTip(_translate("MainWindow", "post tweet city temp"))
+        self.btn_quickPost.setText(_translate("MainWindow", "Post"))
         self.group_arduino.setTitle(_translate("MainWindow", "Arduino"))
         self.btn_connect_arduino.setText(_translate("MainWindow", "Connect"))
         self.textedit_log.setPlainText(_translate("MainWindow", "Logger:"))
         self.lbl_connecton_status.setText(_translate("MainWindow", "qwe"))
-        self.label_4.setText(_translate("MainWindow", "Log"))
         self.btn_send.setText(_translate("MainWindow", "Send"))
         self.btn_connect_arduino_2.setText(_translate("MainWindow", "Stop"))
         self.checkBox_isAuto.setText(_translate("MainWindow", "auto tweet"))
@@ -373,4 +394,5 @@ class Ui_MainWindow(object):
         self.comboBox_port.setItemText(1, _translate("MainWindow", "COM7"))
         self.comboBox_port.setItemText(2, _translate("MainWindow", "COM8"))
         self.comboBox_port.setItemText(3, _translate("MainWindow", "COM10"))
-        self.pushButton.setToolTip(_translate("MainWindow", "post tweet arduino temp"))
+        self.btn_tweetArduinoTemp.setToolTip(_translate("MainWindow", "post tweet arduino temp"))
+        self.btn_tweetArduinoTemp.setText(_translate("MainWindow", "Post"))

@@ -25,26 +25,29 @@ class App(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.btn_post.clicked.connect(self.post)
-        self.ui.btn_quickPost.clicked.connect(self.post)
-        # self.ui.lbl_autoTweet.mousePressEvent(self.showinfo)
+        self.ui.btn_quickPost.clicked.connect(self.post)        
         self.ui.btn_temp.clicked.connect(self.getTemp)
         self.ui.btn_connect_arduino.clicked.connect(self.startConnection)
         self.ui.btn_connect_arduino_2.clicked.connect(self.stopConnection)
         self.ui.btn_send.clicked.connect(self.addLog)
         self.ui.btn_link_twitter.clicked.connect(self.goToLink)
         self.ui.btn_link_weather.clicked.connect(self.goToLink)        
-        self.ui.checkBox_manual.stateChanged.connect(self.activateText)  
-        self.ui.lbl_postTweet.mousePressEvent(self.showinfo)      
+        self.ui.checkBox_manual.stateChanged.connect(self.activateText)
+        self.ui.checkBox_isAuto.stateChanged.connect(self.setAutoSent)    
+        self.ui.btn_tweetArduinoTemp.clicked.connect(self.setAutoSent)     
         self.t1 = threading.Thread(target=self.connectArduino)
+        
         self.t1_stop = False
+        self.isAuto = False
         self.logText = ""
         ports = list(serial.tools.list_ports.comports())
         for p in ports:            
             print(p)
         
-    def showinfo(self):
-        pritn("info")
-    
+    def setAutoSent(self):
+        self.isAuto = not self.isAuto
+        print(self.isAuto)
+            
     def activateText(self):
         stat = self.sender().isChecked()
         if stat:
@@ -78,9 +81,7 @@ class App(QtWidgets.QMainWindow):
         print("port set")
         ser.open()
         print("serial port opened")          
-        while True:
-            if self.t1_stop: 
-                continue               
+        while not self.t1_stop:                           
             if ser.in_waiting:
                 line = ser.readline()
                 # print(line.decode("utf-8").rsplit("\r\n")[0])
@@ -100,20 +101,26 @@ class App(QtWidgets.QMainWindow):
 
     def startConnection(self):
         self.t1_stop = False 
-        self.ui.lbl_connecton_status.setStyleSheet("color: green")
-        self.ui.lbl_connecton_status.setText("connected")
+        
         self.sendLog("Arduino started")        
         try:
-            self.t1.start()                        
+            self.t1.start()   
+            self.ui.lbl_connecton_status.setStyleSheet("color: green")            
+            self.ui.lbl_connecton_status.setText("connected")                     
         except Exception as e:
             print(e)
             pass
 
     def stopConnection(self):
-        self.t1_stop = True  
-        self.sendLog("Arduino pauesed")
-        self.ui.lbl_connecton_status.setText("paused")
-        self.ui.lbl_connecton_status.setStyleSheet("color: red")  
+        self.t1_stop = not self.t1_stop
+        if self.t1_stop:
+            self.ui.lbl_connecton_status.setStyleSheet("color: red")
+            self.ui.lbl_connecton_status.setText("disconnected")
+            self.sendLog("Arduino stopped")  
+        else:
+            self.ui.lbl_connecton_status.setStyleSheet("color: green")
+            self.ui.lbl_connecton_status.setText("connected")
+            self.sendLog("Arduino started")
     
     def sendLog(self, text):
         time = datetime.now()
