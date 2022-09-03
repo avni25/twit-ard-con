@@ -5,6 +5,16 @@ it reads the data of the temperature censor connected to arduino by serial port 
 In addition, with api it displays the selected city's current temperature. 
 
 
+to run project:
+
+install 
+pyqt5
+pyqt5-tools
+pprint
+tweepy
+requests
+
+and then run app.py
 
 
 
